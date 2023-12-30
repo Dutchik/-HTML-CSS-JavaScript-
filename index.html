@@ -1,0 +1,36 @@
+ <div>
+    <svg width="300" height="300">
+        <rect x="150" y="100" width="50" height="15" fill="red" transform="rotate(25 100 100)" />
+        <rect x="160" y="100" width="50" height="15" fill="black" transform="rotate(25 100 100)" />
+        <path id="myPath" stroke="orange" fill="none" transform="rotate(90 100 90)" />
+        <path id="myPath1" stroke="orange" fill="none" transform="rotate(90 100 90)" />
+        <path id="myPath2" stroke="orange" fill="none" transform="rotate(90 100 90)" />
+    </svg>
+</div>
+
+<script>
+  function getRandomPath() {
+    const startX = Math.random() * 30 + 20;
+    const startY = Math.random() * 30 + 20;
+    const controlPoint1X = Math.random() * 30 + 20;
+    const controlPoint1Y = Math.random() * 20 + 20;
+    const controlPoint2X = Math.random() * 20 + 25;
+    const controlPoint2Y = Math.random() * 30 + 20;
+    const endPointX = Math.random() * 20 + 95;
+    const endPointY = Math.random() * 10 + 40;
+
+    return `M${startX} ${startY} C ${controlPoint1X} ${controlPoint1Y}, ${controlPoint2X} ${controlPoint2Y}, ${endPointX} ${endPointY}`;
+  }
+
+  function updatePath() {
+    document.getElementById('myPath').setAttribute('d', getRandomPath());
+    document.getElementById('myPath1').setAttribute('d', getRandomPath());
+    document.getElementById('myPath2').setAttribute('d', getRandomPath());
+  }
+
+  // ページロード時に初期化
+  updatePath();
+
+  // 5秒ごとにパスを更新
+  setInterval(updatePath, 500);
+</script>
